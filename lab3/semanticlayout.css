@@ -30,6 +30,8 @@ section
 	border: 4px solid #1D2475;
 	border-radius: 15px;
 	overflow: hidden;
+	
+	margin-right: 20%; 
 }
 
 aside
@@ -41,6 +43,7 @@ aside
 	float: right;
 	margin-right: 5px; 
 	margin-top: 10px; 
+	margin-left: 10px;
 }
 
 .firhead
