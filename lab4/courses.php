@@ -8,16 +8,13 @@
 <body>
 <div id="header">
     <h1>Courses at CSE</h1>
-<!-- Ex. 1: File of Courses -->
+<!-- Ex. 1: File of Courses -->      
     <p>
-        <?php
-			$filename = "courses.tsv";
-			$f_array = file($filename);
-			$f_size = filesize($filename);
-			$f_line = count($f_array);
-			echo "My dictionary has total $f_line words and size of $f_size bytes.";
-		?>
-    </p>
+        <?php 
+        $filename = "courses.tsv";
+        $lines = file($filename); 
+        ?>
+        Course list has <?= count($lines)?> total courses and size of <?= filesize($filename)?> bytes.
 </div>
 <div class="article">
     <div class="section">
@@ -27,63 +24,111 @@
             function getCoursesByNumber($listOfCourses, $numberOfCourses){
                 $resultArray = array();
 //                implement here.
+                $resultArray = array_rand($listOfCourses, $numberOfCourses);
                 return $resultArray;
             }
         ?>
         <ol>
-            <li>CRYPTOGRAPHY - CSE3029</li>
-            <li>SOFTWARE CONVERGENCE STRATEGY - CSE3031</li>
-            <li>BIG DATA PROCESSING - CSE4036</li>
+            <?php 
+                $numberOfCourses = $_GET["number_of_courses"];
+                if((!isset($numberOfCourses)) or $numberOfCourses = " ") {
+                    $numberOfCourses = 3;
+                }
+                $listOfCourses = $lines;
+                $resultArray = array();
+                $resultArray = getCoursesByNumber($lines,$numberOfCourses);
+                foreach ($resultArray as $todaysCourse) { ?>
+                    <li><?= $listOfCourses[$todaysCourse] ?></li>
+            <?php } ?>
         </ol>
     </div>
     <div class="section">
         <h2>Searching Courses</h2>
 <!-- Ex. 3: Searching Courses & Ex 6: Query Parameters -->
         <?php
+            $startCharacter = (string)$_GET["startCharacter"];
+            if($startCharacter===""){
+                $startCharacter = "C";
+            }
             function getCoursesByCharacter($listOfCourses, $startCharacter){
                 $resultArray = array();
 //                implement here.
+                foreach ($listOfCourses as $searchedCourses) {
+                        if($searchedCourses[0] == $startCharacter) {
+                            $resultArray[] = $searchedCourses;
+                        }
+                    }
                 return $resultArray;
-            }
+            }          
         ?>
         <p>
-            Courses that started by <strong>'C'</strong> are followings :
+            Courses that started by <strong>'<?= $startCharacter ?>'</strong> are followings :
         </p>
         <ol>
-            <li>COMPILER CONSTRUCTION - CSE3009</li>
-            <li>COMPUTER NETWORKS - CSE3027</li>
-            <li>CRYPTOGRAPHY - CSE3029</li>
+            <?php     
+                $array = getCoursesByCharacter($listOfCourses,$startCharacter);
+                foreach ($array as $result) { 
+            ?>
+            <li><?= $result ?></li>
+            <?php } ?>
         </ol>
     </div>
     <div class="section">
         <h2>List of Courses</h2>
 <!-- Ex. 4: List of Courses & Ex 6: Query Parameters -->
         <?php
+            
+
             function getCoursesByOrder($listOfCourses, $orderby){
                 $resultArray = $listOfCourses;
+                $orderby = $_GET["orderby"]; #0:alphabet order, 1:alphabet reverse order
 //                implement here.
+                if(isset($orderby) and $orderby == 0){
+                    sort($resultArray);
+                } else {
+                    rsort($resultArray);
+                }
                 return $resultArray;
+            }
+
+            $text;
+            if(isset($orderby) and $orderby == 0) {
+                $text = "Alphabetical order";
+            } else {
+                $text = "Alphabetical reverse order";
             }
         ?>
         <p>
-            All of courses ordered by <strong>alphabetical order</strong> are followings :
+            All of courses ordered by <strong><?= "$text $orderby" ?></strong> are followings :
         </p>
         <ol>
-            <li class="long">ARTIFICIAL INTELLIGENCE - CSE4007</li>
-            <li>BIG DATA PROCESSING - CSE4036</li>
-            <li class="long">COMPILER CONSTRUCTION - CSE3009</li>
-            <li>COMPUTER NETWORKS - CSE3027</li>
-            <li>CRYPTOGRAPHY - CSE3029</li>
-            <li class="long">EMBEDDED OPERATING SYSTEMS - CSE4035</li>
-            <li>MOBILE COMPUTING - CSE4045</li>
-            <li class="long">SOFTWARE CONVERGENCE STRATEGY - CSE3031</li>
-            <li class="long">WEB APPLICATION DEVELOPMENT - CSE3026</li>
+            <?php 
+                $arr = getCoursesByOrder($listOfCourses, $orderby);
+                foreach ($arr as $content) { 
+                    if ((strlen($content)-8) <= 20) { 
+            ?>
+                        <li><?= $content ?></li>
+                        
+            <?php   } else { ?>
+                        <li class="long"><?= $content ?></li>
+            <?php   } ?>
+            
+            <?php } ?>
         </ol>
     </div>
     <div class="section">
         <h2>Adding Courses</h2>
 <!-- Ex. 5: Adding Courses & Ex 6: Query Parameters -->
-        <p>Input course or code of the course doesn't exist.</p>
+        <?php
+            $newCourse = $_GET["newCourse"];;
+            $codeOfCourse = $_GET["codeOfCourse"];; 
+            if(isset($newCourse) and isset($codeOfCourse) and !empty($codeOfCourse) and !empty($newCourse)) { ?>
+                <p>Input course is <?= $newCourse ?> and code of the course is <?= $codeOfCourse ?> </p>
+            <?php }
+            else  {?>
+                <p>Input course or code of the course doesn't exist.</p>               
+            <?php } ?>
+
     </div>
 </div>
 <div id="footer">
