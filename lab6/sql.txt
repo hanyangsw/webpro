@@ -1,0 +1,163 @@
+----
+Ex1
+----
+create table student
+(
+    student_id int,
+    name varchar(10),
+    year tinyint default 1,
+    dept_no int,
+    major varchar(20) not null,
+    primary key(student_id)
+);
+
+create table department
+(
+	dept_no int auto_increment,
+	dept_name varchar(20) unique,
+	office varchar(20),
+	office_tel varchar(13) not null,
+	primary key(dept_no)
+);
+
+alter table student modify major varchar(40);
+alter table student add gender varchar(10);
+
+alter table department modify dept_name varchar(40);
+alter table department modify office varchar(30);
+
+alter table student drop gender;
+
+----
+Ex2
+----
+insert into student values (20070002, 'James Bond', 3, 4, 'Business Administration'), (20060001, 'Queenie', 4, 4, 'Business
+Administration'), (20030001, 'Reonardo', 4, 2, 'Electronic Engineering'), (20040003, 'Julia', 3, 2, 'Electronic
+Engineering'), (20060002, 'Roosevelt', 3, 1, 'Computer Science'),  (20100002, 'Fearne', 3, 4, 'Business
+Administration'), (20110001, 'Chloe', 2, 1, 'Computer Science'), (20080003, 'Amy', 4, 3, 'Law'), (20040002, 'Selina', 4, 5, 'English Literature'), (20070001, 'Ellen', 4, 4, 'Business Administration'), (20100001, 'Kathy', 3, 4, 'Business Administration'), (20110002, 'Lucy', 2, 2, 'Electronic
+Engineering'), (20030002, 'Michelle', 5, 1, 'Computer Science'), (20070003, 'April', 4, 3, 'Law'), (20070005, 'Alicia', 2, 5, 'English Literature'), (20100003, 'Yullia', 3, 1, 'Computer Science'), (20070007, 'Ashlee', 2, 4, 'Business Administration');
+
+insert into department (dept_name, office, office_tel) values  ('Computer Science', 'Engineering building', '02-3290-0123'),  ('Electronic Engineering', 'Engineering building', '02-3290-2345'), ('Law', 'Law building', '02-3290-7896'), ( 'Business Administration', 'Administration building', '02-3290-1112'), ('English Literature', 'Literature building', '02-3290-4412');
+
+----
+Ex3
+----
+update department set dept_name = 'Electronic and Electrical Engineering' where dept_name = 'Electronic engineering';
+
+insert into department (dept_name, office, office_tel) values  ('Education', 'Education building', '02-3290-2347');
+
+delete from student where name = 'Michelle';
+
+delete from student where name = 'Fearne';
+
+----
+Ex4
+----
+select * from student where major = 'Computer Science';
+select student_id, year, major from student;
+select * from student where year = 3;
+select * from student where year = 1 or year = 2;
+select student_id, name, year from department d join student s on d.dept_no = s.dept_no where dept_name = 'Business Administration';
+
+----
+Ex5
+----
+select * from student where student_id like '2007%';
+select * from student order by student_id;
+select * from student group by year having avg(year) > 3;
+select * from student where student_id like '2007%' and major = 'Business Administration' limit 2;
+
+----
+Ex6
+----
+select role from roles
+join movies on name = "Pi" and movie_id = id;
+
+select first_name, last_name from actors
+join roles on actor_id = actors.id
+join movies on name = "Pi" and movies.id = roles.movie_id;
+
+select a.first_name, a.last_name from actors a
+join roles r1 on r1.actor_id = a.id
+join roles r2 on r2.actor_id = a.id
+join movies m1 on m1.id = r1.movie_id
+join movies m2 on m2.id = r2.movie_id
+where m1.name = 'Kill Bill: Vol. 1' and m2.name = 'Kill Bill: Vol. 2';
+
+select id, a.first_name, a.last_name from actors a
+join roles r on a.id = r.actor_id
+group by id
+order by count(movie_id) desc limit 7;
+
+select genre from movies_genres
+join movies m on m.id = movie_id
+group by genre
+order by count(genre) desc limit 3;
+
+select first_name,last_name,genre from directors d
+join movies_directors md on d.id = md.director_id
+join movies_genres mg on mg.movie_id = md.movie_id
+where genre = "Thriller"
+group by id order by count(id) desc limit 1;
+
+----
+Ex7
+----
+select grade from grades
+join courses on name = "Computer Science 143"
+where course_id = id;
+
+select s.name, grade from students s
+join grades g on g.student_id = s.id
+join courses c on c.id = g.course_id
+where c.name = "Computer Science 143" and g.grade <='B-';
+
+select s.name,c.name,grade from students s JOIN grades g on g.student_id = s.id 
+join courses c on c.name = "Computer Science 143" and g.course_id = c.id 
+where grade <= 'B-';
+
+select c.name from courses c
+join grades g on c.id = course_id
+group by course_id
+having count(student_id)>=2;
+
+------
+Extra
+------
+select name from movies where year = 1995;
+
+select count(a.id) from actors a
+join roles r on a.id=r.actor_id
+join movies m on r.movie_id=m.id
+where m.name="Lost in Translation";
+
+select first_name,last_name from actors a
+join roles r on a.id=r.actor_id
+join movies m on r.movie_id=m.id
+where m.name="Lost in Translation";
+
+select first_name,last_name from directors d
+join movies_directors md on md.director_id=d.id
+join movies m on md.movie_id=m.id
+where m.name ="Fight Club";
+
+select count(movie_id) from directors d
+join movies_directors md on md.director_id=d.id
+where first_name="Clint" and last_name="Eastwood";
+
+select m.name from directors d
+join movies_directors md on md.director_id=d.id
+join movies m on md.movie_id=m.id
+where first_name="Clint" and last_name="Eastwood";
+
+select first_name, last_name from directors d
+join movies_directors md on md.director_id=d.id
+join movies m on md.movie_id=m.id
+join movies_genres mg on m.id=mg.movie_id
+where genre="Horror";
+
+select a.first_name, a.last_name from actors a
+join roles r on a.id= r.actor_id
+join movies_directors md on r.movie_id=md.movie_id
+join directors d on d.id=md.director_id
+where d.first_name="Christopher" and d.last_name="Nolan";
