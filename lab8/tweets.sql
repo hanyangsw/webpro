@@ -1,0 +1,9 @@
+CREATE TABLE tweets (
+	no INT NOT NULL auto_increment,
+	author VARCHAR(20) NOT NULL,
+	contents TEXT NOT NULL,
+	time DATETIME NOT NULL,
+	PRIMARY KEY (no)
+)
+
+ALTER TABLE tweets AUTO_INCREMENT=1;

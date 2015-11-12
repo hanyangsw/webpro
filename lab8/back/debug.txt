@@ -1,0 +1,6 @@
+$test1 = $_GET["con_type"];
+$test2 = $_GET["con_txt"];
+					
+echo "<script>alert(\"$test1\");</script>";
+echo "<script>alert(\"$test2\");</script>";
+					
