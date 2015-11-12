@@ -1,0 +1,455 @@
+/* Kang Byoung-Sue, 2012037119 */
+
+body
+{
+	font-family: "Brown", "verdana", "sans-serif";	
+	margin: 0px;
+	padding: 0px;
+}
+
+.root
+{
+	margin: 0 auto;
+	max-width: 1024px;
+}
+
+header
+{
+	background-color: black;
+	color: white;
+}
+
+header > div
+{
+	font-size: 15px;
+	width: 1024px;
+	margin: 0px auto;
+	overflow: hidden;
+}
+
+header > div > div
+{
+	float: left;
+	padding-top: 11px;
+	padding-bottom: 11px;
+	padding-right: 30px;
+}
+
+header > div > div:last-child
+{
+	float: right;
+	color: #FF6567;
+}
+
+header > div > div:hover
+{
+	color: #1cace2;
+	cursor: Pointer;
+}
+
+#brand
+{
+	padding-top: 32px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-bottom: 10px;
+}
+
+#bdlogo
+{
+	width: 300px;
+	height: 62px;
+}
+
+#brand > div
+{
+	float: right;
+	margin-top: 45px;
+}
+
+#brand > div > a {
+	text-decoration: none;
+}
+
+#brand .fa-facebook {
+    color:#3b5998;
+}
+#brand .fa-twitter {
+    color:#55acee;
+}
+#brand .fa-google {
+    color : #dd4b39;
+}
+#brand .fa-pinterest{
+    color : #c8232c;
+}
+#brand .fa-instagram {
+    color :#3f729b;
+}
+#brand .fa-tumblr{
+    color : #34526f;
+}
+
+h1
+{
+	text-align: center;
+}
+
+nav > div 
+{
+	float: left;
+	border: 1px solid #D9D9D8;
+}
+
+nav > div:not(#search-wrap)
+{
+	padding-top: 0.65em;
+	padding-bottom: 0.65em;
+	padding-left: 0.72em;
+	padding-right: 0.72em;
+	border-right: none;
+}
+
+nav > div:hover:not(#search-wrap)
+{
+	box-shadow: inset 0 0 0 2px;
+}
+
+#search-wrap
+{
+	border: 1px solid #D9D9D8;
+    padding :0;
+    overflow: hidden;
+    float : none;
+    position: relative;
+}
+
+#search-wrap input
+{
+    border : none;
+    padding: 0.65em 0.75em;
+    font-size: 16px;
+    background-color: white;
+    width: 94%;
+    z-index: 1;
+}
+
+#search-wrap button 
+{
+    border : none;
+    background-color: white;
+    top :3px;
+    right : 4px;
+    padding: 0.65em 0.75em;
+    position: absolute;
+    font-size: 13px;
+    z-index: 2;
+}
+
+.week
+{
+	background-color: black;
+	color: white;
+	padding: 0.1px 0px;
+}
+
+.week > div
+{
+	float: center;
+	text-align: center;
+}
+
+.week > div
+{	
+	background-color: black;
+	color: white;
+	margin-left: 10px;
+	margin-top: 10px;
+	line-height: 32px;
+}
+
+.week > p
+{	
+	text-align: center;	
+}
+
+.week > div > div:first-child
+{	
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	font-size: 1.25em;
+	background-color: #3b5998;
+	float: left;
+}
+
+.week > div > div:last-child
+{	
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	font-size: 1.25em;
+	background-color: #55acee;	
+	margin-left: 0.25em;
+	float: left;
+}
+
+/* ---------------- */
+/* CHART HIGH-LIGHT */
+/* ---------------- */
+aside 
+{
+	background-color: black;
+	color: white;
+	margin-top: 10px;
+	margin-left: 10px;
+	width: 300px;
+	float: right;
+}
+
+aside > div:first-child
+{
+	background-color: #484647;
+	padding: 0.75em;
+}
+
+aside > div:first-child > span > i
+{
+	color: black;
+}
+
+.divrow
+{
+	height: 100px;
+	padding: 0px 10px 5px 10px;
+	border-bottom: 1px solid #989898 ;
+}
+
+.divrow > div:first-child
+{
+	color: #989898;
+	padding: 1em;
+}
+
+.divrow > div:nth-child(2)
+{
+	width: 45px;
+	font-size: 2em;
+	margin-top: 6px;
+	text-align: center;
+	float: left;
+}
+
+.divrow > div:nth-child(3)
+{
+	float: left;
+}
+
+.divrow > div:last-child
+{
+	float: right;
+}
+
+.divrow > div:nth-child(3) > img
+{
+	width: 2.5em;
+	height: 2.5em;
+	margin: 6px;
+	float: left;
+}
+
+.divrow > div:nth-child(3) > p
+{
+	width: 192px;
+	margin: 0px;
+}
+
+.divrow > div:nth-child(3) > p > span
+{
+	display: block;
+}
+
+.divrow > div:nth-child(3) > p > span:first-child
+{
+	font-size: 1em;	
+}
+
+.divrow > div:nth-child(3) > p > span:last-child
+{
+	font-size: 12px;
+	color: #1cace2;
+}
+
+.divrow > div:last-child > i
+{
+	width: 32px;
+	height: 32px;
+	line-height: 32px;
+	border: 2px solid white;
+	border-radius: 50%;
+	
+	font-size: 15px;
+	margin-top: 5px;
+	text-align: center;
+}
+
+/* ----------- */
+/* MAIN CHART */
+/* ----------- */
+
+article
+{
+	margin-top: 10px;
+	overflow: hidden;
+}
+
+.mainch
+{
+	height: 104px;
+	border-top: 1px solid #CDCDCD;
+	border-bottom: 1px solid #CDCDCD;
+	overflow: hidden;
+}
+
+.mainch > div:first-child
+{
+	width: 34px;
+	line-height: 104px;
+	text-align: center;
+	color: #8c8e90;
+	background-color: rgb(231, 231, 231);
+	float: left;
+}
+
+.fa.fa-arrow-up
+{
+	color: #05c648;
+}
+
+.fa.fa-arrow-down
+{
+   color : #f93c33;
+}
+
+.mainch > div:nth-child(2)
+{
+	width: 100px;
+	margin-top: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+	float: left;
+}
+
+.mainch > div:nth-child(2) > span
+{
+	display: block;
+}
+
+.mainch > div:nth-child(2) > span:first-child
+{
+	display: block;
+	font-size: 62px;
+	text-align: center;
+}
+
+.mainch > div:nth-child(2) > span:last-child
+{
+	font-size: 12.4px;
+	color: #989898;
+	line-height: 1;
+}
+
+.mainch > div:nth-child(3) 
+{
+	overflow: hidden;
+	float: left;
+}
+
+.mainch > div:nth-child(3) > img
+{
+	margin-top: 6px;
+	margin-bottom: 6px;
+	margin-right: 12px;
+	width: 91px;
+	height: 91px;
+	float: left;
+}
+
+.mainch > div:nth-child(3) > p
+{
+	display: inline-block;
+}
+
+.mainch > div:nth-child(3) > p > span
+{
+	display: block;
+}
+
+.mainch > div:nth-child(3) > p > span:first-child
+{
+	font-size: 24px;
+}
+
+.mainch > div:nth-child(3) > p > span:last-child
+{
+	font-size: 16px;
+	color: #1cace2;
+}
+
+.mainch > div:last-child 
+{
+	float: right;
+}
+
+.mainch > div:last-child > i
+{
+	width: 32px;
+	height: 32px;
+	line-height: 32px;
+	border: 2px solid black;
+	border-radius: 50%;
+	
+	font-size: 15px;
+	margin-top: 15px;
+	margin-right: 10px;
+	text-align: center;
+}
+
+footer
+{
+	background-color: black;
+	margin-top: 30px;
+	padding: 10px;
+}
+
+footer > div
+{
+	text-align: right;
+}
+
+.mainch:hover
+{
+	border: 1px solid black;
+}
+
+.fa-play:hover {
+	color: #1CACE2;
+	cursor: pointer;
+}
+
+.divrow > div:nth-child(3) > p > span:last-child:hover 
+{
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.mainch > div:nth-child(3) > p > span:last-child:hover 
+{
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+
+
+
+
